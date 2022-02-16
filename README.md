@@ -1,4 +1,4 @@
-# Toy company's website
+# Toy company's website | Bicep Project
 
 This repository contains the website for our toy company.
 
