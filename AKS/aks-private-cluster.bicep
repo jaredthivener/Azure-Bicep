@@ -2,7 +2,9 @@ param location string = 'westus'
 param clusterName string = uniqueString(resourceGroup().id)
 param subnetId string = '/subscriptions/f645938d-2368-4a99-b589-ea72e5544719/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/virtualNetworks/aks-vnet/subnets/default'
 param nodeCount int = 1
+@description('General Purpose | 2vCPUs | 8GB RAM')
 param vmSize string = 'standard_d2s_v3'
+param kubernetesVersion string = '1.23.8'
 
 resource clusterName_resource 'Microsoft.ContainerService/managedClusters@2022-06-01' = {
   name: clusterName
@@ -24,6 +26,7 @@ resource clusterName_resource 'Microsoft.ContainerService/managedClusters@2022-0
         enableAutoScaling: true
         minCount: 1
         maxCount: 3
+        type: 'VirtualMachineScaleSets'
       }
     ]
     publicNetworkAccess: 'Disabled'
@@ -36,5 +39,6 @@ resource clusterName_resource 'Microsoft.ContainerService/managedClusters@2022-0
     apiServerAccessProfile: {
       enablePrivateCluster: true
     }
+    kubernetesVersion: kubernetesVersion
   }
 }
