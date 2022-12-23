@@ -1,0 +1,34 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+  condition: 
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'AzureSandbox(f645938d-2368-4a99-b589-ea72e5544719)'
+    scriptType: 'ps'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az deployment sub create -l eastus2 -n bicep --template-file /Azure-Bicep/AKS/main.bicep --what-if'
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'AzureSandbox(f645938d-2368-4a99-b589-ea72e5544719)'
+    scriptType: 'ps'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az deployment sub create -l eastus2 -n bicep --template-file /Azure-Bicep/AKS/main.bicep'
