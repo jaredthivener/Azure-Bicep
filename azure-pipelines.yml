@@ -19,16 +19,12 @@ steps:
   displayName: 'Run a multi-line script'
   condition: 
 
-- task: AzureCLI@2
+- task: AzureResourceManagerTemplateDeployment@3
   inputs:
-    azureSubscription: 'AzureSandbox(f645938d-2368-4a99-b589-ea72e5544719)'
-    scriptType: 'ps'
-    scriptLocation: 'inlineScript'
-    inlineScript: 'az deployment sub create -l eastus2 -n bicep --template-file /Azure-Bicep/AKS/main.bicep --what-if'
-
-- task: AzureCLI@2
-  inputs:
-    azureSubscription: 'AzureSandbox(f645938d-2368-4a99-b589-ea72e5544719)'
-    scriptType: 'ps'
-    scriptLocation: 'inlineScript'
-    inlineScript: 'az deployment sub create -l eastus2 -n bicep --template-file /Azure-Bicep/AKS/main.bicep'
+    deploymentScope: 'Subscription'
+    azureResourceManagerConnection: 'AzureSandbox(f645938d-2368-4a99-b589-ea72e5544719)'
+    subscriptionId: 'f645938d-2368-4a99-b589-ea72e5544719'
+    location: 'East US 2'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://github.com/jaredthivener/Azure-Bicep/blob/main/AKS/main.bicep'
+    deploymentMode: 'Incremental'
