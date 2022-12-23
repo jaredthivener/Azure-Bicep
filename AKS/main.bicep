@@ -10,7 +10,7 @@ resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   location: location
 }
 
-module aks './aks-cluster.bicep' = {
+module aks '/Azure-Bicep/AKS/module/aks-cluster.bicep' = {
   name: '${resourcePrefix}cluster'
   scope: rg
   params: {
