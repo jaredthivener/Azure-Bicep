@@ -1,7 +1,7 @@
 targetScope = 'subscription'
 
-param location string = 'westus'
-param resourcePrefix string = 'aksbicep1'
+param location string = 'eastus2'
+param resourcePrefix string = 'aksbicep'
 
 var resourceGroupName = '${resourcePrefix}-rg'
 
@@ -10,11 +10,20 @@ resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   location: location
 }
 
-module aks '/Azure-Bicep/AKS/Module/aks-cluster.bicep' = {
+module aks 'Modules/aks-cluster.bicep' = {
   name: '${resourcePrefix}cluster'
   scope: rg
   params: {
     location: location
     clusterName: resourcePrefix
+    logAnalyticsWorkspaceResourceID: log.outputs.WorkspaceResourceId
+  }
+}
+
+module log 'Modules/log-analytics.bicep' = {
+  scope: rg
+  name: 'log-analytics'
+  params: {
+    location: location
   }
 }
