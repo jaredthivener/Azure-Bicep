@@ -19,6 +19,10 @@ resource aks 'Microsoft.ContainerService/managedClusters@2022-03-02-preview' = {
         name: 'system'
         count: nodeCount
         vmSize: vmSize
+        type: 'VirtualMachineScaleSets'
+        osType: 'Linux'
+        osSKU: 'Ubuntu'
+        osDiskType: 'Ephemeral'
         mode: 'System'
       }
     ]
