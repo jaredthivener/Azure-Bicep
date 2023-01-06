@@ -5,6 +5,7 @@ This repository contains Azure Bicep projects
 The Azure infrastructure is defined using [Bicep](https://docs.microsoft.com/azure/azure-resource-manager/bicep/).
 # Learning
 Microsoft Learn - [Azure Bicep](https://learn.microsoft.com/en-us/training/paths/fundamentals-bicep/)
+
 YouTube Training
 
 - [Bicep](https://youtube.com/playlist?list=PLnWpsLZNgHzUWIDWI0lWCTsS8wC9UaJho)
