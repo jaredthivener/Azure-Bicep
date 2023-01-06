@@ -8,6 +8,7 @@ Microsoft Learn
 - [Fundamentals of Bicep](https://learn.microsoft.com/en-us/training/paths/fundamentals-bicep/)
 - [Intermediate Bicep](https://learn.microsoft.com/en-us/training/paths/intermediate-bicep/)
 - [Advanced Bicep](https://learn.microsoft.com/en-us/training/paths/advanced-bicep/)
+
 Optional
 - [Deploy Azure resources by using Bicep and Azure Pipelines](https://learn.microsoft.com/en-us/training/paths/bicep-azure-pipelines/)
 - [Deploy Azure resources by using Bicep and GitHub Actions](https://learn.microsoft.com/en-us/training/paths/bicep-github-actions/)
