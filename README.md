@@ -6,9 +6,9 @@ The Azure infrastructure is defined using [Bicep](https://docs.microsoft.com/azu
 # Learning
 Microsoft Learn
 
--[Fundamentals of Bicep](https://learn.microsoft.com/en-us/training/paths/fundamentals-bicep/)
--[Intermediate Bicep](https://learn.microsoft.com/en-us/training/paths/intermediate-bicep/)
--[Advanced Bicep](https://learn.microsoft.com/en-us/training/paths/advanced-bicep/)
+- [Fundamentals of Bicep](https://learn.microsoft.com/en-us/training/paths/fundamentals-bicep/)
+- [Intermediate Bicep](https://learn.microsoft.com/en-us/training/paths/intermediate-bicep/)
+- [Advanced Bicep](https://learn.microsoft.com/en-us/training/paths/advanced-bicep/)
 
 YouTube Training
 - [Bicep](https://youtube.com/playlist?list=PLnWpsLZNgHzUWIDWI0lWCTsS8wC9UaJho)
