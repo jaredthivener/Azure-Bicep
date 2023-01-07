@@ -4,10 +4,10 @@ This repository contains Azure Bicep projects
 # How to use
 The Azure infrastructure is defined using [Bicep](https://docs.microsoft.com/azure/azure-resource-manager/bicep/).
 
-To deploy Azure resources, change directory to project folder and deploy `main.bicep` file. 
+To deploy Azure resources, clone github repo, change directory to project folder and deploy `main.bicep` file. 
 
 Example: 
-        `az deployment sub create -l eastus2 -n bicep --template-file AKS/main.bicep`
+        `az deployment sub create -l eastus2 -n bicep --template-file `main.bicep`
 # Learning
 Microsoft Learn
 - [Fundamentals of Bicep](https://learn.microsoft.com/en-us/training/paths/fundamentals-bicep/)
