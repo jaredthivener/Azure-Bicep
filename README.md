@@ -7,7 +7,7 @@ The Azure infrastructure is defined using [Bicep](https://docs.microsoft.com/azu
 To deploy Azure resources, clone github repo, change directory to project folder and deploy `main.bicep` file. 
 
 Example: 
-        `az deployment sub create -l eastus2 -n bicep --template-file main.bicep`
+        `az deployment sub create -l eastus2 -n bicep -f main.bicep`
 # Learning
 Microsoft Learn
 - [Fundamentals of Bicep](https://learn.microsoft.com/en-us/training/paths/fundamentals-bicep/)
