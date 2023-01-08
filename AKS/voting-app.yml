@@ -7,10 +7,12 @@ spec:
   selector:
     matchLabels:
       app: azure-vote-back
+      poolType: app
   template:
     metadata:
       labels:
         app: azure-vote-back
+        poolType: app
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
@@ -45,11 +47,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: azure-vote-front
+  poolType: app
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: azure-vote-front
+      poolType: app
   template:
     metadata:
       labels:
