@@ -1,5 +1,6 @@
 param location string = 'eastus2'
 param workspaceName string = 'aks${uniqueString(resourceGroup().id)}'
+param appInsightsName string = 'aks${uniqueString(resourceGroup().id)}'
 
 //Create Log Analytics Workspace 
 resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {
@@ -17,7 +18,7 @@ resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2022-10
 
 //Create App insights component
 resource appInsightsComponents 'Microsoft.Insights/components@2020-02-02' = {
-  name: 'aks-insights'
+  name: appInsightsName
   location: location
   kind: 'web'
   properties: {
