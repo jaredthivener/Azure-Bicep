@@ -58,6 +58,7 @@ spec:
     metadata:
       labels:
         app: azure-vote-front
+        poolType: app
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
