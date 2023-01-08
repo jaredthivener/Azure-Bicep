@@ -23,6 +23,11 @@ resource aks 'Microsoft.ContainerService/managedClusters@2022-03-02-preview' = {
         osType: 'Linux'
         osSKU: 'Ubuntu'
         mode: 'System'
+        osDiskType: 'Ephemeral'
+        osDiskSizeGB: 60
+        nodeLabels: {
+          poolType: 'system'
+        }
       }
     ]
     addonProfiles: {
@@ -35,4 +40,24 @@ resource aks 'Microsoft.ContainerService/managedClusters@2022-03-02-preview' = {
     }
   }
 }
+
+//Create AKS Node Pool - App 
+resource aksCluster 'Microsoft.ContainerService/managedClusters/agentPools@2022-10-02-preview' = {
+  name: 'app'
+  parent: aks
+  properties: {
+        count: nodeCount
+        vmSize: vmSize
+        type: 'VirtualMachineScaleSets'
+        osType: 'Linux'
+        osSKU: 'Ubuntu'
+        mode: 'User'
+        osDiskType: 'Ephemeral'
+        osDiskSizeGB: 60
+        nodeLabels: {
+          poolType: 'app'
+        }
+  }
+}
+
 
