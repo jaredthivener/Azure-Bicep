@@ -2,7 +2,7 @@ param location string = 'eastus2'
 param clusterName string = 'aks${uniqueString(resourceGroup().id)}'
 
 param nodeCount int = 1
-param vmSize string = 'standard_d3s_v3'
+param vmSize string = 'Standard_DS2_v2'
 param logAnalyticsWorkspaceResourceID string 
 
 resource aks 'Microsoft.ContainerService/managedClusters@2022-03-02-preview' = {
