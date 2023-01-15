@@ -2,17 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: azure-vote-back
+  Namespace: azure-vote
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: azure-vote-back
       poolType: app
+      Namespace: azure-vote
   template:
     metadata:
       labels:
         app: azure-vote-back
         poolType: app
+        Namespace: azure-vote
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
@@ -48,12 +51,14 @@ kind: Deployment
 metadata:
   name: azure-vote-front
   poolType: app
+  Namespace: azure-vote
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: azure-vote-front
       poolType: app
+      Namespace: azure-vote
   template:
     metadata:
       labels:
@@ -90,3 +95,10 @@ spec:
   - port: 80
   selector:
     app: azure-vote-front
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: azure-vote
+  labels:
+    name: azure-vote
