@@ -2,6 +2,7 @@ param location string = 'eastus2'
 param clusterName string = 'aks${uniqueString(resourceGroup().id)}'
 
 param nodeCount int = 1
+@description('2vCPU | 7GB Memory | 86GB cache')
 param vmSize string = 'Standard_DS2_v2'
 param logAnalyticsWorkspaceResourceID string 
 
