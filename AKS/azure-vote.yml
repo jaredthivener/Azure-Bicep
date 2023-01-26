@@ -40,11 +40,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name: azure-vote-back
+  poolType: app
+  Namespace: azure-vote
 spec:
   ports:
   - port: 6379
   selector:
     app: azure-vote-back
+    poolType: app
+    Namespace: azure-vote
 ---
 apiVersion: apps/v1
 kind: Deployment
