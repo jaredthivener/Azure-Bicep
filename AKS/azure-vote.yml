@@ -1,3 +1,10 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: azure-vote
+  labels:
+    name: azure-vote
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -102,10 +109,4 @@ spec:
     app: azure-vote-front
     poolType: app
     Namespace: azure-vote
----
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: azure-vote
-  labels:
-    name: azure-vote
+
