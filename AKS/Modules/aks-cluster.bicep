@@ -6,9 +6,13 @@ param nodeCount int = 1
 param vmSize string = 'Standard_DS2_v2'
 param logAnalyticsWorkspaceResourceID string 
 
-resource aks 'Microsoft.ContainerService/managedClusters@2022-03-02-preview' = {
+resource aks 'Microsoft.ContainerService/managedClusters@2022-10-02-preview' = {
   name: clusterName
   location: location
+  sku: {
+    name: 'Basic'
+    tier: 'Free'
+  }
   identity: {
     type: 'SystemAssigned'
   }
