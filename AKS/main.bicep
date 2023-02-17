@@ -1,21 +1,18 @@
 targetScope = 'subscription'
 
 param location string = 'eastus2'
-param resourcePrefix string = 'aksbicep'
-
-var resourceGroupName = '${resourcePrefix}-rg'
+param rgName string = 'rg-aks'
 
 resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
-  name: resourceGroupName
+  name: rgName
   location: location
 }
 
 module aks 'Modules/aks-cluster.bicep' = {
-  name: '${resourcePrefix}-cluster'
+  name: 'aks-cluster'
   scope: rg
   params: {
     location: location
-    clusterName: resourcePrefix
     logAnalyticsWorkspaceResourceID: log.outputs.WorkspaceResourceId
   }
 }
