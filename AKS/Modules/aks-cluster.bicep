@@ -6,7 +6,7 @@ param nodeCount int = 1
 param vmSize string = 'Standard_DS2_v2'
 param logAnalyticsWorkspaceResourceID string 
 
-resource aks 'Microsoft.ContainerService/managedClusters@2022-10-02-preview' = {
+resource aksCluster 'Microsoft.ContainerService/managedClusters@2022-10-02-preview' = {
   name: clusterName
   location: location
   sku: {
@@ -47,9 +47,9 @@ resource aks 'Microsoft.ContainerService/managedClusters@2022-10-02-preview' = {
 }
 
 //Create AKS Node Pool - App 
-resource aksCluster 'Microsoft.ContainerService/managedClusters/agentPools@2022-10-02-preview' = {
+resource aksNodePool 'Microsoft.ContainerService/managedClusters/agentPools@2022-10-02-preview' = {
   name: 'app'
-  parent: aks
+  parent: aksCluster
   properties: {
         count: nodeCount
         vmSize: vmSize
