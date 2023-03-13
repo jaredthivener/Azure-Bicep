@@ -28,7 +28,7 @@ resource rgNetwork 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 }
 
 //Storage Account Module
-module storage 'storage.bicep' = {
+module storage 'modules/storage.bicep' = {
   scope: resourceGroup
   name: 'storage'
   params: {
@@ -39,7 +39,7 @@ module storage 'storage.bicep' = {
 }
 
 //Virtual Network Module
-module vnet 'vnet.bicep' = {
+module vnet 'modules/vnet.bicep' = {
   scope: rgNetwork
   name: 'vnet'
   params: {
@@ -48,7 +48,7 @@ module vnet 'vnet.bicep' = {
 }
 
 //Linux VM
-module linux_vm 'linux-vm.bicep' = {
+module linux_vm 'modules/linux-vm.bicep' = {
   scope: resourceGroup
   name: 'linux-vm'
   params: {
@@ -59,3 +59,4 @@ module linux_vm 'linux-vm.bicep' = {
     location: location
   }
 }
+
