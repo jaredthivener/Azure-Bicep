@@ -39,12 +39,16 @@ resource ubuntuVM 'Microsoft.Compute/virtualMachines@2022-11-01' = {
         managedDisk: {
           storageAccountType: 'StandardSSD_LRS'
         }
+        deleteOption: 'Delete'
       }
     }
     networkProfile: {
       networkInterfaces: [
         {
           id: networkinterface.id
+          properties: {
+            deleteOption: 'Delete'
+          }
         }
       ]
     }
