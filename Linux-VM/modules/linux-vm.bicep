@@ -1,5 +1,5 @@
 param location string = resourceGroup().location
-param vmName string = 'bicep${uniqueString(resourceGroup().id)}'
+var vmName = 'bicep${uniqueString(resourceGroup().id)}'
 param adminUsername string
 @secure()
 param adminPassword string
@@ -21,7 +21,7 @@ resource ubuntuVM 'Microsoft.Compute/virtualMachines@2022-11-01' = {
       vmSize: 'Standard_D2_v4'
     }
     osProfile: {
-      computerName: 'bicep${uniqueString(resourceGroup().id)}'
+      computerName: vmName
       adminUsername: adminUsername
       adminPassword: adminPassword
     }
@@ -33,7 +33,7 @@ resource ubuntuVM 'Microsoft.Compute/virtualMachines@2022-11-01' = {
         version: 'latest'
       }
       osDisk: {
-        name: 'bicep${uniqueString(resourceGroup().id)}'
+        name: vmName
         caching: 'ReadWrite'
         createOption: 'FromImage'
         managedDisk: {
@@ -86,7 +86,7 @@ resource linuxAgent 'Microsoft.Compute/virtualMachines/extensions@2022-11-01' = 
 
 //Linux VM - NIC
 resource networkinterface 'Microsoft.Network/networkInterfaces@2022-07-01' = {
-  name: 'bicep${uniqueString(resourceGroup().id)}'
+  name: vmName
   location: location
   properties: {
     nicType: 'Standard'
@@ -112,7 +112,7 @@ resource networkinterface 'Microsoft.Network/networkInterfaces@2022-07-01' = {
 }
 
 resource publicIPAddress 'Microsoft.Network/publicIPAddresses@2022-07-01' = {
-  name: 'bicep${uniqueString(resourceGroup().id)}'
+  name: vmName
   location: location
   sku: {
     name: 'Standard'
@@ -123,7 +123,7 @@ resource publicIPAddress 'Microsoft.Network/publicIPAddresses@2022-07-01' = {
     publicIPAddressVersion: 'IPv4'
     deleteOption: 'Delete'
     dnsSettings: {
-      domainNameLabel: 'bicep${uniqueString(resourceGroup().id)}'
+      domainNameLabel: vmName
     }
   }
 }
