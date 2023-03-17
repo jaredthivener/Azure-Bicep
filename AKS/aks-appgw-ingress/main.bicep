@@ -1,7 +1,7 @@
 @secure()
 param sshpub string
 param location string = resourceGroup().location
-param appgwname string = 'appgw${uniqueString(resourceGroup().id)}'
+param appgwname string = 'appgw-${uniqueString(resourceGroup().id)}'
 var appgwid = resourceId('Microsoft.Network/applicationGateways', appgwname)
 
 param k8scidr string = '10.0.0.192/27'
