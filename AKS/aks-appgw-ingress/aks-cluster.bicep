@@ -11,7 +11,7 @@ param subnetid string
 param location string
 param appgwname string
 
-resource aks 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
+resource aks 'Microsoft.ContainerService/managedClusters@2022-11-02-preview' = {
   name: name
   location: location
   identity: {
@@ -60,11 +60,11 @@ resource aks 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
   }
 }
 
-resource appgw 'Microsoft.Network/applicationGateways@2021-05-01' existing = {
+resource appgw 'Microsoft.Network/applicationGateways@2022-09-01' existing = {
   name: appgwname
 }
 
-resource contrib 'Microsoft.Authorization/roleAssignments@2020-08-01-preview' = {
+resource contrib 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
   name: guid('aks-contrib-roleassignment-agic')
   properties: {
     roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')
@@ -74,7 +74,7 @@ resource contrib 'Microsoft.Authorization/roleAssignments@2020-08-01-preview' = 
   scope: appgw
 }
 
-resource read 'Microsoft.Authorization/roleAssignments@2020-08-01-preview' = {
+resource read 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
   name: guid('aks-read-roleassignment-agic')
   properties: {
     roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')

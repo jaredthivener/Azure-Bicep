@@ -7,7 +7,7 @@ param k8scidr string = '10.0.0.192/27'
 param dockercidr string = '10.0.0.224/27'
 param dnsservice string = '10.0.0.202'
 
-resource vnet 'Microsoft.Network/virtualNetworks@2021-05-01' = {
+resource vnet 'Microsoft.Network/virtualNetworks@2022-09-01' = {
   name: 'vnet-akspoc'
   location: location
   properties: {
@@ -33,15 +33,15 @@ resource vnet 'Microsoft.Network/virtualNetworks@2021-05-01' = {
   }
 }
 
-resource appgwsubnet 'Microsoft.Network/virtualNetworks/subnets@2021-05-01' existing = {
+resource appgwsubnet 'Microsoft.Network/virtualNetworks/subnets@2022-09-01' existing = {
   name: '${vnet.name}/ApplicationGateway'
 }
 
-resource defaultsubnet 'Microsoft.Network/virtualNetworks/subnets@2021-05-01' existing = {
+resource defaultsubnet 'Microsoft.Network/virtualNetworks/subnets@2022-09-01' existing = {
   name: '${vnet.name}/default'
 }
 
-resource appgwpip 'Microsoft.Network/publicIPAddresses@2021-05-01' = {
+resource appgwpip 'Microsoft.Network/publicIPAddresses@2022-09-01' = {
   name: 'appgw-akspoc'
   location: location
   sku: {
@@ -53,13 +53,13 @@ resource appgwpip 'Microsoft.Network/publicIPAddresses@2021-05-01' = {
   }
 }
 
-resource appgw 'Microsoft.Network/applicationGateways@2021-05-01' = {
+resource appgw 'Microsoft.Network/applicationGateways@2022-09-01' = {
   name: appgwname
   location: location
   properties: {
     sku: {
-      name: 'Standard_v2'
-      tier: 'Standard_v2'
+      name: 'Standard_v3'
+      tier: 'Standard_v3'
     }
     gatewayIPConfigurations: [
       {
