@@ -1,6 +1,6 @@
 param sshpub string
 param location string = resourceGroup().location
-param appgwname string = 'appgw-akspoc'
+param appgwname string = 'appgw${uniqueString(resourceGroup().id)}'
 var appgwid = resourceId('Microsoft.Network/applicationGateways', appgwname)
 
 param k8scidr string = '10.0.0.192/27'
@@ -8,7 +8,7 @@ param dockercidr string = '10.0.0.224/27'
 param dnsservice string = '10.0.0.202'
 
 resource vnet 'Microsoft.Network/virtualNetworks@2022-09-01' = {
-  name: 'vnet-akspoc'
+  name: 'vnet-${uniqueString(resourceGroup().id)}'
   location: location
   properties: {
     addressSpace: {
@@ -42,7 +42,7 @@ resource defaultsubnet 'Microsoft.Network/virtualNetworks/subnets@2022-09-01' ex
 }
 
 resource appgwpip 'Microsoft.Network/publicIPAddresses@2022-09-01' = {
-  name: 'appgw-akspoc'
+  name: 'appgw-pip-${uniqueString(resourceGroup().id)}'
   location: location
   sku: {
     name: 'Standard'
@@ -156,11 +156,11 @@ resource appgw 'Microsoft.Network/applicationGateways@2022-09-01' = {
   }
 }
 
-module aks 'aks-cluster.bicep' = {
+module aks 'modules/aks-cluster.bicep' = {
   name: 'aks-poc'
   params: {
-    name: 'aks-poc'
-    adminusername: 'akspocAdministrator'
+    name: 'aks-${uniqueString(resourceGroup().id)}'
+    adminusername: 'azureadmin'
     sshpub: sshpub
     appgwid: appgw.id
     appgwname: appgwname
