@@ -1,3 +1,4 @@
+@secure()
 param sshpub string
 param location string = resourceGroup().location
 param appgwname string = 'appgw${uniqueString(resourceGroup().id)}'
@@ -53,13 +54,13 @@ resource appgwpip 'Microsoft.Network/publicIPAddresses@2022-09-01' = {
   }
 }
 
-resource appgw 'Microsoft.Network/applicationGateways@2022-09-01' = {
+resource appgw 'Microsoft.Network/applicationGateways@2021-05-01' = {
   name: appgwname
   location: location
   properties: {
     sku: {
-      name: 'Standard_v3'
-      tier: 'Standard_v3'
+      name: 'Standard_v2'
+      tier: 'Standard_v2'
     }
     gatewayIPConfigurations: [
       {
