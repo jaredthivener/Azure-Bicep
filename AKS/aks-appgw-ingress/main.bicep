@@ -156,7 +156,7 @@ resource appgw 'Microsoft.Network/applicationGateways@2021-05-01' = {
   }
 }
 
-module aks 'aks.bicep' = {
+module aks 'aks-cluster.bicep' = {
   name: 'aks-poc'
   params: {
     name: 'aks-poc'
